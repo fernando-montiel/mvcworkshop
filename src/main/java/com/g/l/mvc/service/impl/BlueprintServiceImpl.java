@@ -10,20 +10,21 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BlueprintServiceImpl implements CRUDService {
+public class BlueprintServiceImpl implements CRUDService<ResponseBlueprintDTO, RequestBlueprintDTO> {
 
-    private final BlueprintRepository blueprintRepository;
+    private final BlueprintRepository repository;
 
     private final BlueprintMapper mapper;
 
     public BlueprintServiceImpl(BlueprintRepository blueprintRepository, @Qualifier("blueprintMapperImpl") BlueprintMapper mapper) {
-        this.blueprintRepository = blueprintRepository;
+        this.repository = blueprintRepository;
         this.mapper = mapper;
     }
 
-    public ResponseBlueprintDTO create(RequestBlueprintDTO requestBlueprintDTO){
-        Blueprint blueprint = mapper.requestBlueprintDtoToBlueprint(requestBlueprintDTO);
-        blueprintRepository.save(blueprint);
+    @Override
+    public ResponseBlueprintDTO create(RequestBlueprintDTO object) {
+        Blueprint blueprint = mapper.requestBlueprintDtoToBlueprint(object);
+        repository.save(blueprint);
         return mapper.blueprintToResponseBlueprintDto(blueprint);
     }
 }

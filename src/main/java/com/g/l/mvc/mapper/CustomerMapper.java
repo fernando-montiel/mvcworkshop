@@ -1,7 +1,8 @@
 package com.g.l.mvc.mapper;
 
 
-import com.g.l.mvc.dto.request.RequestBlueprintDTO;
+
+import com.g.l.mvc.dto.request.RequestCustomerDTO;
 import com.g.l.mvc.dto.response.ResponseCustomerDTO;
 import com.g.l.mvc.model.Customer;
 import org.mapstruct.Mapper;
@@ -24,7 +25,7 @@ public interface CustomerMapper {
             @Mapping(source = "businessNmae", target = "businessName"),
             @Mapping(source = "projects", target = "projects")
     })
-    Customer requestCustomerDtoToCustomer(RequestBlueprintDTO request);
+    Customer requestCustomerDtoToCustomer(RequestCustomerDTO request);
 
     @Mappings({
             @Mapping(source = "phoneNumber", target = "phoneNumber"),
@@ -35,7 +36,7 @@ public interface CustomerMapper {
             @Mapping(source = "businessNmae", target = "businessName"),
             @Mapping(source = "projects", target = "projects")
     })
-    ResponseCustomerDTO requestCustomerDtoToCustomer(Customer response);
+    ResponseCustomerDTO customerToResponseCustomerDto(Customer response);
 
 
 
