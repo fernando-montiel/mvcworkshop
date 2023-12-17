@@ -1,8 +1,9 @@
 package com.g.l.mvc.controller;
 
 
-import com.g.l.mvc.dto.BlueprintDTO;
-import com.g.l.mvc.service.BlueprintServiceImpl;
+import com.g.l.mvc.dto.request.RequestBlueprintDTO;
+import com.g.l.mvc.dto.response.ResponseBlueprintDTO;
+import com.g.l.mvc.service.impl.BlueprintServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class BlueprintController {
     }
 
     @PostMapping("/blueprint/create")
-    public ResponseEntity<BlueprintDTO> create(@RequestBody BlueprintDTO blueprintDTO){
+    public ResponseEntity<ResponseBlueprintDTO> create(@RequestBody RequestBlueprintDTO blueprintDTO){
         return new ResponseEntity<>(service.create(blueprintDTO), HttpStatus.CREATED);
     }
 }

@@ -1,13 +1,11 @@
-package com.g.l.mvc.dto;
+package com.g.l.mvc.dto.response;
 
-public class BlueprintDTO {
+public class ResponseBlueprintDTO {
 
     private String type;
     private String location;
 
-    public BlueprintDTO(){}
-
-    public BlueprintDTO(String type, String location) {
+    public ResponseBlueprintDTO(String type, String location) {
         this.type = type;
         this.location = location;
     }
