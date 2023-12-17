@@ -1,8 +1,8 @@
 package com.g.l.mvc.controller;
 
 
-import com.g.l.mvc.dto.request.RequestCustomerDTO;
-import com.g.l.mvc.dto.response.ResponseCustomerDTO;
+import com.g.l.mvc.dto.request.RequestProjectDTO;
+import com.g.l.mvc.dto.response.ResponseProjectDTO;
 import com.g.l.mvc.service.CRUDService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api")
-public class CustomerController {
+public class ProjectController {
 
-    private final CRUDService<ResponseCustomerDTO, RequestCustomerDTO> crud;
+    private final CRUDService<ResponseProjectDTO, RequestProjectDTO> crud;
 
-    public CustomerController(CRUDService<ResponseCustomerDTO, RequestCustomerDTO> crud) {
+    public ProjectController(CRUDService<ResponseProjectDTO, RequestProjectDTO> crud) {
         this.crud = crud;
     }
 
-    @PostMapping("/customer/create")
-    public ResponseEntity<ResponseCustomerDTO> create(@RequestBody RequestCustomerDTO request){
+    @PostMapping("project/create")
+    public ResponseEntity<ResponseProjectDTO> create(@RequestBody RequestProjectDTO request){
         return new ResponseEntity<>(crud.create(request), HttpStatus.CREATED);
     }
 }
